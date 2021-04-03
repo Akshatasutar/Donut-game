@@ -57,6 +57,7 @@ class Lvl3Activity : AppCompatActivity() {
                     }
                 }
             }
+            view.invalidate()
             return@OnTouchListener true
         })
     }

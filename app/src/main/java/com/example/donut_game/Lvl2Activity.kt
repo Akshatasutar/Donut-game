@@ -5,12 +5,10 @@ import android.graphics.*
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentManager
 
 class Lvl2Activity : AppCompatActivity() {
@@ -18,12 +16,11 @@ class Lvl2Activity : AppCompatActivity() {
     private val mDestPath = Path()
     private var mSourceCanvas = Canvas()
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lvl2)
-        doneButton = findViewById(R.id.done_button)
-        val donut2ImageView:ImageView = findViewById(R.id.lvl_2_donut_imageView)
+        doneButton = findViewById(R.id.done_button_1)
+        val donut2ImageView:ImageView = findViewById(R.id.lvl_2_orig_donut_imageView)
         //donut2ImageView.setImageBitmap(pictureToErase())
 
         /*
@@ -42,9 +39,9 @@ class Lvl2Activity : AppCompatActivity() {
         })
         donut2ImageView.onDrawForeground(mSourceCanvas)
          */
-        val donutView = Lvl2DonutView(this)
-        val rootLayout: ConstraintLayout = findViewById(R.id.lvl_2_root_layout)
-        rootLayout.addView(donutView)
+        //val donutView = Lvl2DonutView(this)
+        //val rootLayout: ConstraintLayout = findViewById(R.id.activity_lvl2)
+        //rootLayout.addView(donutView)
     }
 
     @SuppressLint("ResourceAsColor")
