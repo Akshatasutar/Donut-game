@@ -4,30 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Lvl5Activity">
+    tools:context=".Lvl5Activity"
+    tools:ignore="MissingClass">
 
-    <Button
-        android:id="@+id/done_button_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="36dp"
-        android:onClick="showLvl5ClearedDialog"
-        android:text="@string/lvl_done"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lvl_5_donut_imageView" />
-
-    <ImageView
+    <com.ortiz.touchview.TouchImageView
         android:id="@+id/lvl_5_donut_imageView"
-        android:layout_width="282dp"
-        android:layout_height="262dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lvl_5_donut" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

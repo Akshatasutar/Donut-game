@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onStartButtonPressed(v: View){
-        val intent = Intent(this, Lvl5Activity::class.java)
+        val intent = Intent(this, Lvl1Activity::class.java)
         startActivity(intent)
     }
 }

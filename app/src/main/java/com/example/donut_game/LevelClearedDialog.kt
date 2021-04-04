@@ -63,7 +63,6 @@ class LevelClearedDialog: DialogFragment() {
     private fun goToNextLvl(){
         intent = when(lvl) {
             1 -> Intent(context, Lvl3Activity::class.java)
-            5 -> Intent(context, Lvl2Activity::class.java)
             3 -> Intent(context, Lvl4Activity::class.java)
             4 -> Intent(context, Lvl5Activity::class.java)
             else -> {
