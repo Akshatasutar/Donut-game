@@ -15,10 +15,10 @@ import androidx.fragment.app.FragmentManager
 class Lvl4Activity : AppCompatActivity() {
     private lateinit var doneButton: Button
     private lateinit var donut4ImageView: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lvl4)
-        doneButton = findViewById(R.id.done_button_4)
         donut4ImageView = findViewById(R.id.lvl_4_donut_imageView)
 
         playLevel3()
@@ -26,35 +26,44 @@ class Lvl4Activity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun playLevel3(){
+        val handler = Handler(Looper.getMainLooper())
+
+        val runnable2 = Runnable {
+            donut4ImageView.setImageResource(R.drawable.lvl_4_donut_9)
+        }
+        val runnable3 = Runnable {
+            donut4ImageView.setImageResource(R.drawable.lvl_4_blank)
+        }
+        val runnable4 = Runnable {
+            showLevel4ClearedDialog()
+        }
+        val runnable1 = Runnable {
+            donut4ImageView.setImageResource(R.drawable.lvl_4_donut_7)
+            handler.postDelayed(runnable2, 1000)
+            Thread(runnable2).interrupt()
+
+            handler.postDelayed(runnable3, 1000)
+            Thread(runnable3).interrupt()
+
+            handler.postDelayed(runnable4, 1000)
+            Thread(runnable4).interrupt()
+        }
+
         donut4ImageView.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
             when (motionEvent.action) {
+                //When user presses on screen:
                 MotionEvent.ACTION_DOWN -> {
-                    val handler = Handler(Looper.getMainLooper())
                     handler.postDelayed(
                         Runnable {
                             donut4ImageView.setImageResource(R.drawable.lvl_4_donut_4)
                             handler.postDelayed(Runnable {
                                 donut4ImageView.setImageResource(R.drawable.lvl_4_donut_5)
+                                handler.postDelayed(runnable1, 1000)
+                                Thread(runnable1).interrupt()
                             }, 1000)
-                            handler.postDelayed(Runnable {
-                                donut4ImageView.setImageResource(R.drawable.lvl_4_donut_7)
-                            }, 1000)
-                            handler.postDelayed(Runnable {
-                                donut4ImageView.setImageResource(R.drawable.lvl_4_donut_9)
-                            }, 1000)
-                            handler.postDelayed(Runnable {
-                                donut4ImageView.setImageResource(R.drawable.lvl_4_blank)
-                            }, 1000)
-                            /*
-                            handler.postDelayed(Runnable {
-                                showLevel4ClearedDialog(view)
-                            }, 500)
-
-                             */
-                                 },
+                        },
                         2000
                     )
-                    //TODO:Close Runnables
                 }
             }
             view.invalidate()
@@ -62,7 +71,7 @@ class Lvl4Activity : AppCompatActivity() {
         })
     }
 
-    fun showLevel4ClearedDialog(v: View){
+    private fun showLevel4ClearedDialog(){
         val mp: MediaPlayer = MediaPlayer.create(this, R.raw.eating_finished)
         mp.start()
         val fm: FragmentManager = supportFragmentManager
