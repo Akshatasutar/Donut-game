@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginTop="36dp"
-        android:onClick="onDoneButton5Pressed"
+        android:onClick="showLvl5ClearedDialog"
         android:text="@string/lvl_done"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/lvl_5_donut_imageView" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/lvl_5_donut_imageView"
         android:layout_width="282dp"
         android:layout_height="262dp"
         android:layout_marginStart="16dp"

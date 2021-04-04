@@ -43,7 +43,7 @@ class Lvl3Activity : AppCompatActivity() {
                     lvl3DonutImageView.y = lvl3DonutImageView.y + yDistance
                     Log.i("kdjnhfb", "x, y = (" + lvl3DonutImageView.x + ", " + lvl3DonutImageView.y + ")")
 
-                    val rootLayout: ConstraintLayout = findViewById(R.id.lvl_3_layout)  //Constraint layout dim always 0
+                    val rootLayout: ConstraintLayout = findViewById(R.id.lvl_3_layout)
                     rootLayout.measure(0,0)
                     lvl3DonutImageView.measure(0,0)
                     val posEndX = rootLayout.measuredWidth.toFloat() + rootLayout.measuredWidth.toFloat()/8  //-560 to 968
