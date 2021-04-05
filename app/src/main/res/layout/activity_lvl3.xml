@@ -6,7 +6,7 @@
     android:layout_height="730dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    tools:context=".Lvl3Activity"
+    tools:context=".Lvl2Activity"
     android:id="@+id/lvl_3_layout">
 
     <ImageView

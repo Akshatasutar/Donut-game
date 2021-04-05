@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Donut_game">
         <activity android:name=".EndOfGameActivity"></activity>
-        <activity android:name=".Lvl5Activity" />
         <activity android:name=".Lvl4Activity" />
         <activity android:name=".Lvl3Activity" />
         <activity android:name=".Lvl2Activity" />

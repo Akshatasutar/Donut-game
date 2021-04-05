@@ -18,7 +18,7 @@ class EndOfGameActivity : AppCompatActivity() {
         val viewIds = listOf<Int>(R.id.textView2, R.id.textView3, R.id.textView4, R.id.textView5, R.id.ak_donut_imageView)
         for ((i, viewId) in viewIds.withIndex()) {
             val fadeAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.fading_effect)
-            fadeAnimation.startOffset = i*1000.toLong()
+            fadeAnimation.startOffset = i*1800.toLong()
 
             if(i != 4) {
                 val textView: TextView = findViewById(viewId)

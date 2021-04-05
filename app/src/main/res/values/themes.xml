@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Donut_game" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Donut_game" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/bread_brown</item>
         <item name="colorPrimaryVariant">@color/bread_brown_status_bar</item>
@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Navigation bar color. -->
         <item name="android:navigationBarColor" tools:targetApi="l">?attr/colorPrimary</item>
 
     </style>

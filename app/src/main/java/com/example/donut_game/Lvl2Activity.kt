@@ -1,78 +1,77 @@
 package com.example.donut_game
 
 import android.annotation.SuppressLint
-import android.graphics.*
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentManager
 
 class Lvl2Activity : AppCompatActivity() {
-    private lateinit var doneButton:Button
-    private val mDestPath = Path()
-    private var mSourceCanvas = Canvas()
+    private lateinit var lvl3DonutImageView:ImageView
+    var xDown = 0f
+    var yDown = 0f
+    var hasEntered: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lvl2)
-        doneButton = findViewById(R.id.done_button_1)
-        val donut2ImageView:ImageView = findViewById(R.id.lvl_2_orig_donut_imageView)
-        //donut2ImageView.setImageBitmap(pictureToErase())
+        setContentView(R.layout.activity_lvl3)
+        lvl3DonutImageView = findViewById(R.id.lvl_3_donut_imageView)
 
-        /*
-        donut2ImageView.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
-            var xPos: Float = motionEvent.x
-            var yPos: Float = motionEvent.y
+        playLevel3()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun playLevel3(){
+        lvl3DonutImageView.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
             when (motionEvent.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    mDestPath.moveTo(xPos, yPos)
+                    xDown = motionEvent.x
+                    yDown = motionEvent.y
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    mDestPath.lineTo(xPos, yPos)
+                    var xMoved: Float = motionEvent.x
+                    var yMoved: Float = motionEvent.y
+
+                    var xDistance:Float = xMoved - xDown
+                    var yDistance:Float = yMoved - yDown
+
+                    lvl3DonutImageView.x = lvl3DonutImageView.x + xDistance
+                    lvl3DonutImageView.y = lvl3DonutImageView.y + yDistance
+                    Log.i("kdjnhfb", "x, y = (" + lvl3DonutImageView.x + ", " + lvl3DonutImageView.y + ")")
+
+                    val rootLayout: ConstraintLayout = findViewById(R.id.lvl_3_layout)
+                    rootLayout.measure(0,0)
+                    lvl3DonutImageView.measure(0,0)
+                    val posEndX = rootLayout.measuredWidth.toFloat() + rootLayout.measuredWidth.toFloat()/8  //-560 to 968
+                    val posEndY = rootLayout.measuredHeight.toFloat() + rootLayout.measuredHeight/2.toFloat()  //-568 to 1750
+                    val negEndX = -lvl3DonutImageView.measuredWidth.toFloat()
+                    val negEndY = -lvl3DonutImageView.measuredHeight.toFloat()
+                    //824 - screen width, 282 - image width
+                    //1109 - screen height, 262 - image height
+                    if(lvl3DonutImageView.x !in -560.0f..posEndX || lvl3DonutImageView.y !in -568.0f..posEndY) {
+                        if (!hasEntered){
+                            levelComplete()
+                        }
+                    }
                 }
             }
+            view.invalidate()
             return@OnTouchListener true
         })
-        donut2ImageView.onDrawForeground(mSourceCanvas)
-         */
-        //val donutView = Lvl2DonutView(this)
-        //val rootLayout: ConstraintLayout = findViewById(R.id.activity_lvl2)
-        //rootLayout.addView(donutView)
     }
 
-    @SuppressLint("ResourceAsColor")
-    private fun pictureToErase():Bitmap?{
-        //convert drawable file into bitmap
-        val rawBitmap =
-            BitmapFactory.decodeResource(this.resources, R.drawable.lvl_2_donut)
-        //convert bitmap into mutable bitmap
-        val mBitmap = rawBitmap.copy(Bitmap.Config.ARGB_8888, true)
-
-        Log.i("kxjdhcb", "IsMutable:" + mBitmap.isMutable)
-
-        //Paint to erase
-        val paint = Paint().apply {
-            isAntiAlias = true
-            xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-            style = Paint.Style.STROKE
-            strokeWidth = 200f
-            alpha = 0
-        }
-
-        //Canvas for drawing - set bitmap on canvas
-        mSourceCanvas.setBitmap(mBitmap)
-        return mBitmap
-    }
-
-    fun onDoneButtonPressed(v: View){
+    private fun levelComplete(){
+        hasEntered = true
         val mp: MediaPlayer = MediaPlayer.create(this, R.raw.eating_finished)
         mp.start()
+        lvl3DonutImageView.visibility = View.GONE
         val fm: FragmentManager = supportFragmentManager
         LevelClearedDialog().newInstance(2)?.show(fm, "fragment_level_cleared")
     }
-
 }
+

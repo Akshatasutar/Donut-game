@@ -2,68 +2,45 @@ package com.example.donut_game
 
 import android.annotation.SuppressLint
 import android.media.MediaPlayer
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.FragmentManager
+import com.github.chrisbanes.photoview.PhotoView
+import com.github.chrisbanes.photoview.PhotoViewAttacher
+import com.ortiz.touchview.TouchImageView
 
 class Lvl4Activity : AppCompatActivity() {
     private lateinit var doneButton: Button
-    private lateinit var donut4ImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lvl4)
-        donut4ImageView = findViewById(R.id.lvl_4_donut_imageView)
-
-        playLevel3()
+        setContentView(R.layout.activity_lvl5)
+        playLvl5()
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun playLevel3(){
-        val handler = Handler(Looper.getMainLooper())
+    private fun playLvl5(){
+        val donut5ImageView: TouchImageView = findViewById(R.id.lvl_5_donut_imageView)
+        donut5ImageView.setImageResource(R.drawable.lvl_5_donut)
+        donut5ImageView.maxZoom = 10.0f
+        donut5ImageView.setScrollPosition(0.5f, 0.5f)
 
-        val runnable2 = Runnable {
-            donut4ImageView.setImageResource(R.drawable.lvl_4_donut_9)
-        }
-        val runnable3 = Runnable {
-            donut4ImageView.setImageResource(R.drawable.lvl_4_blank)
-        }
-        val runnable4 = Runnable {
-            showLevel4ClearedDialog()
-        }
-        val runnable1 = Runnable {
-            donut4ImageView.setImageResource(R.drawable.lvl_4_donut_7)
-            handler.postDelayed(runnable2, 1000)
-            Thread(runnable2).interrupt()
-
-            handler.postDelayed(runnable3, 1000)
-            Thread(runnable3).interrupt()
-
-            handler.postDelayed(runnable4, 1000)
-            Thread(runnable4).interrupt()
-        }
-
-        donut4ImageView.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
+        donut5ImageView.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
             when (motionEvent.action) {
-                //When user presses on screen:
                 MotionEvent.ACTION_DOWN -> {
-                    handler.postDelayed(
-                        Runnable {
-                            donut4ImageView.setImageResource(R.drawable.lvl_4_donut_4)
-                            handler.postDelayed(Runnable {
-                                donut4ImageView.setImageResource(R.drawable.lvl_4_donut_5)
-                                handler.postDelayed(runnable1, 1000)
-                                Thread(runnable1).interrupt()
-                            }, 1000)
-                        },
-                        2000
-                    )
+                    Log.i("zsxf", "Zoom value = " + donut5ImageView.currentZoom)
+                    if(donut5ImageView.currentZoom == donut5ImageView.maxZoom){
+                        donut5ImageView.setImageResource(R.drawable.lvl_4_blank)
+                        showLvl5ClearedDialog()
+                    }
                 }
             }
             view.invalidate()
@@ -71,7 +48,7 @@ class Lvl4Activity : AppCompatActivity() {
         })
     }
 
-    private fun showLevel4ClearedDialog(){
+    private fun showLvl5ClearedDialog(){
         val mp: MediaPlayer = MediaPlayer.create(this, R.raw.eating_finished)
         mp.start()
         val fm: FragmentManager = supportFragmentManager

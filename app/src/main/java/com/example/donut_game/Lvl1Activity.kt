@@ -21,12 +21,12 @@ class Lvl1Activity : AppCompatActivity() {
             count++
             val mp:MediaPlayer = MediaPlayer.create(this, com.example.donut_game.R.raw.tap_sound)
             mp.start()
-            if(count == 2) {
+            if(count == 4) {
                 donutButton.setImageResource(com.example.donut_game.R.drawable.donut_half_eaten)
                 val mp:MediaPlayer = MediaPlayer.create(this, com.example.donut_game.R.raw.eating)
                 mp.start()
             }
-            if(count >= 4){
+            if(count >= 8){
                 val mp:MediaPlayer = MediaPlayer.create(this, com.example.donut_game.R.raw.eating_finished)
                 mp.start()
                 donutButton.visibility = View.GONE

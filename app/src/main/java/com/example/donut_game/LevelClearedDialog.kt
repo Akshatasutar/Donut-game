@@ -3,7 +3,6 @@ package com.example.donut_game
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,9 +61,10 @@ class LevelClearedDialog: DialogFragment() {
 
     private fun goToNextLvl(){
         intent = when(lvl) {
-            1 -> Intent(context, Lvl3Activity::class.java)
+            1 -> Intent(context, Lvl2Activity::class.java)
+            2 -> Intent(context, Lvl3Activity::class.java)
             3 -> Intent(context, Lvl4Activity::class.java)
-            4 -> Intent(context, Lvl5Activity::class.java)
+            //4 -> Intent(context, Lvl5Activity::class.java)
             else -> {
                 Intent(context, EndOfGameActivity::class.java)
             }
