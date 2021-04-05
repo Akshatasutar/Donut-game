@@ -24,6 +24,7 @@ class Lvl3Activity : AppCompatActivity() {
         setContentView(R.layout.activity_lvl4)
         donut4ImageView = findViewById(R.id.lvl_4_donut_imageView)
         donut4ImageView.setBackgroundResource(R.drawable.lvl_4_donut)
+        
         playLevel3()
     }
 
@@ -32,7 +33,6 @@ class Lvl3Activity : AppCompatActivity() {
         var disappearAnim:AnimationDrawable
         donut4ImageView.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
             when (motionEvent.action) {
-                //When user presses on screen:
                 MotionEvent.ACTION_DOWN -> run {
                     donut4ImageView.setBackgroundResource(R.drawable.disappearing_image)
                     disappearAnim = donut4ImageView.background as AnimationDrawable
