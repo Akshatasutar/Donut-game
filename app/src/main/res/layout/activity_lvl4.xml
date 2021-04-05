@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/lvl_4_donut_imageView"
-        android:layout_width="282dp"
+        android:layout_width="265dp"
         android:layout_height="262dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
@@ -17,6 +17,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lvl_4_donut" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

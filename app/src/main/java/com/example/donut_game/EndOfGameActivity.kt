@@ -11,7 +11,6 @@ class EndOfGameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_end_of_game)
-        //TODO:Animate so the text appears one after the other
         val akDonutImageView: TouchImageView = findViewById(R.id.ak_donut_imageView)
         akDonutImageView.setImageResource(R.drawable.akshu_donut)
 
